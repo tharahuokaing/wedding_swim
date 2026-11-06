@@ -4,10 +4,10 @@ const resultDisplay = document.getElementById('result');
 
 const swimmers = [
     { element: document.getElementById('swimmer1'), name: 'កីឡាការនី ឡូយ​ គីមមួយ', pos: 40 },
-    { element: document.getElementById('swimmer2'), name: 'កីឡាករ ដូ', pos: 40 },
+    { element: document.getElementById('swimmer2'), name: 'កីឡាករ ណាក់', pos: 40 },
     { element: document.getElementById('swimmer3'), name: 'កីឡាករ ដំ', pos: 40 },
     { element: document.getElementById('swimmer4'), name: 'កីឡាករ គោ', pos: 40 },
-    { element: document.getElementById('swimmer5'), name: 'កីឡាករ ម៉ែន', pos: 40 },
+    { element: document.getElementById('swimmer5'), name: 'កីឡាករ ឡែន', pos: 40 },
     { element: document.getElementById('swimmer6'), name: 'កីឡាការនី ធន នីមុី', pos: 40 },
     { element: document.getElementById('swimmer7'), name: 'កីឡាការនី ស្រី ចាន់', pos: 40 },
     { element: document.getElementById('swimmer8'), name: 'កីឡាការនី ហួកាំង ថារ័ត្ន', pos: 40 },
