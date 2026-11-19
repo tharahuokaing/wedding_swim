@@ -3,77 +3,83 @@ const resetBtn = document.getElementById('resetBtn');
 const resultDisplay = document.getElementById('result');
 
 const swimmers = [
-    { element: document.getElementById('swimmer1'), name: 'កីឡាការនី ឡូយ​ គីមមួយ', pos: 40 },
-    { element: document.getElementById('swimmer2'), name: 'កីឡាករ ណាក់', pos: 40 },
-    { element: document.getElementById('swimmer3'), name: 'កីឡាករ ដំ', pos: 40 },
-    { element: document.getElementById('swimmer4'), name: 'កីឡាករ គោ', pos: 40 },
-    { element: document.getElementById('swimmer5'), name: 'កីឡាករ ឡែន', pos: 40 },
-    { element: document.getElementById('swimmer6'), name: 'កីឡាការនី ធន នីមុី', pos: 40 },
-    { element: document.getElementById('swimmer7'), name: 'កីឡាការនី ស្រី ចាន់', pos: 40 },
-    { element: document.getElementById('swimmer8'), name: 'កីឡាការនី ហួកាំង ថារ័ត្ន', pos: 40 },
-    { element: document.getElementById('swimmer9'), name: 'កីឡាករ សេង ឆាត', pos: 40 },
-    { element: document.getElementById('swimmer10'), name: 'កូនកំលោះ ហួកាំង ថារ៉ា', pos: 40 },
-    { element: document.getElementById('swimmer11'), name: 'កូនក្រមុំ ខេន លីដា', pos: 40 },
-    { element: document.getElementById('swimmer12'), name: 'កីឡាការនី សម្បិត្ត​ ឡុងនី', pos: 40 },
-    { element: document.getElementById('swimmer13'), name: 'កីឡាករ សម្បិត្ត​ លីហាង', pos: 40 },
-    { element: document.getElementById('swimmer14'), name: 'កីឡាការនី ហួ សុខលីម', pos: 40 },
-    { element: document.getElementById('swimmer15'), name: 'កីឡាករ ហួ តុងហាំង', pos: 40 },
-    { element: document.getElementById('swimmer16'), name: 'កីឡាការនី តន ចាន់សីម៉ា', pos: 40 },
-    { element: document.getElementById('swimmer17'), name: 'កីឡាករ សម្បិត្ត​ លីហ័រ', pos: 40 },
-    { element: document.getElementById('swimmer18'), name: 'កីឡាករ ឡេង ណាវ៉ាត់ត្រា', pos: 40 },
-    { element: document.getElementById('swimmer19'), name: 'កីឡាករ សុខ ខេមរ៉ា', pos: 40 },
-    { element: document.getElementById('swimmer20'), name: 'កីឡាករ N/A', pos: 40 }
+    { element: document.getElementById('swimmer1'), nameKm: 'កីឡាការនី ឡូយ គីមមួយ', nameEn: 'Swimmer Loy Kimmuoy', pos: 40 },
+    { element: document.getElementById('swimmer2'), nameKm: 'កីឡាករ ណាក់', nameEn: 'Swimmer Nak', pos: 40 },
+    { element: document.getElementById('swimmer3'), nameKm: 'កីឡាករ ដំ', nameEn: 'Swimmer Dom', pos: 40 },
+    { element: document.getElementById('swimmer4'), nameKm: 'កីឡាករ គោ', nameEn: 'Swimmer Ko', pos: 40 },
+    { element: document.getElementById('swimmer5'), nameKm: 'កីឡាករ ឡែន', nameEn: 'Swimmer Len', pos: 40 },
+    { element: document.getElementById('swimmer6'), nameKm: 'កីឡាការនី ធន នីមុី', nameEn: 'Swimmer Thorn Nymoy', pos: 40 },
+    { element: document.getElementById('swimmer7'), nameKm: 'កីឡាការនី ស្រី ចាន់', nameEn: 'Swimmer Srey Chan', pos: 40 },
+    { element: document.getElementById('swimmer8'), nameKm: 'កីឡាការនី ហួកាំង ថារ័ត្ន', nameEn: 'Swimmer Huokaing Tharoat', pos: 40 },
+    { element: document.getElementById('swimmer9'), nameKm: 'កីឡាករ សេង ឆាត', nameEn: 'Swimmer Seng Chhat', pos: 40 },
+    { element: document.getElementById('swimmer10'), nameKm: 'កូនកំលោះ ហួកាំង ថារ៉ា', nameEn: 'Groom Huokaing Thara', pos: 40 },
+    { element: document.getElementById('swimmer11'), nameKm: 'កូនក្រមុំ ខេន លីដា', nameEn: 'Bride Khen Lida', pos: 40 },
+    { element: document.getElementById('swimmer12'), nameKm: 'កីឡាការនី សម្បិត្ត ឡុងនី', nameEn: 'Swimmer Sambath Longny', pos: 40 },
+    { element: document.getElementById('swimmer13'), nameKm: 'កីឡាករ សម្បិត្ត លីហាង', nameEn: 'Swimmer Sambath Lyhang', pos: 40 },
+    { element: document.getElementById('swimmer14'), nameKm: 'កីឡាការនី ហួ សុខលីម', nameEn: 'Swimmer Huo Soklim', pos: 40 },
+    { element: document.getElementById('swimmer15'), nameKm: 'កីឡាករ ហួ តុងហាំង', nameEn: 'Swimmer Huo Tonghang', pos: 40 },
+    { element: document.getElementById('swimmer16'), nameKm: 'កីឡាការនី តន ចាន់សីម៉ា', nameEn: 'Swimmer Ton Chanseyma', pos: 40 },
+    { element: document.getElementById('swimmer17'), nameKm: 'កីឡាករ សម្បិត្ត លីហ័រ', nameEn: 'Swimmer Sambath Lyhor', pos: 40 },
+    { element: document.getElementById('swimmer18'), nameKm: 'កីឡាករ ឡេង ណាវ៉ាត់ត្រា', nameEn: 'Swimmer Leng Navatra', pos: 40 },
+    { element: document.getElementById('swimmer19'), nameKm: 'កីឡាករ សុខ ខេមរ៉ា', nameEn: 'Swimmer Sok Khemara', pos: 40 },
+    { element: document.getElementById('swimmer20'), nameKm: 'កីឡាករ N/A', nameEn: 'Swimmer N/A', pos: 40 }
 ];
 
 let raceInterval;
 let isRacing = false;
 
 function startRace() {
-    if (isRacing) return; // បើកំពុងប្រណាំង មិនឱ្យចុចដដែលៗទេ
+    if (isRacing) return; // បើកំពុងប្រណាំង មិនឱ្យចុចដដែលៗទេ (Prevent duplicate clicks while racing)
     isRacing = true;
     startBtn.disabled = true;
-    resultDisplay.innerText = "កំពុងប្រជែងគ្នាយ៉ាងស្វិតស្វាញ... 🏊‍♂️💨";
+    resultDisplay.innerHTML = `កំពុងប្រជែងគ្នាយ៉ាងស្វិតស្វាញ... 🏊‍♂️💨<br><small style="font-family: 'Poppins', sans-serif;">Racing fiercely toward the finish line...</small>`;
 
-    // ទទឹងអាងសរុប ដកទំហំរូបអ្នកហែលទឹក និងខ្សែទីព្រ័ត្រ
+    // ទទឹងអាងសរុប ដកទំហំរូបអ្នកហែលទឹក និងខ្សែទីព្រ័ត្រ (Total lane width minus swimmer & finish line offset)
     const finishPos = document.querySelector('.lane').offsetWidth - 90;
 
     raceInterval = setInterval(() => {
-        let winners = [];
+        let winnersKm = [];
+        let winnersEn = [];
 
         swimmers.forEach(swimmer => {
-            // បន្ថែមល្បឿនចៃដន្យពី ១ ទៅ ៧ ក្នុងមួយវគ្គ
+            // បន្ថែមល្បឿនចៃដន្យពី ១ ទៅ ៧ ក្នុងមួយវគ្គ (Random speed increment per tick)
             const speed = Math.random() * 6 + 1;
             swimmer.pos += speed;
-            swimmer.element.style.left = swimmer.pos + 'px';
+            if (swimmer.element) {
+                swimmer.element.style.left = swimmer.pos + 'px';
+            }
 
-            // ពិនិត្យមើលថាអ្នកណាដល់ទីព្រ័ត្រមុន
+            // ពិនិត្យមើលថាអ្នកណាដល់ទីព្រ័ត្រមុន (Check who crossed the finish line)
             if (swimmer.pos >= finishPos) {
-                winners.push(swimmer.name);
+                winnersKm.push(swimmer.nameKm);
+                winnersEn.push(swimmer.nameEn);
             }
         });
 
-        // បើសិនជាមានអ្នកដល់ទីព្រ័ត្រ
-        if (winners.length > 0) {
+        // បើសិនជាមានអ្នកដល់ទីព្រ័ត្រ (If one or more swimmers finish)
+        if (winnersKm.length > 0) {
             clearInterval(raceInterval);
             isRacing = false;
             startBtn.disabled = false;
-            
-            // បង្ហាញអ្នកឈ្នះ (ករណីដល់ព្រមគ្នាក៏បង្ហាញទាំងពីរនាក់)
-            resultDisplay.innerText = `🏆 លទ្ធផល៖ ${winners.join(' និង ')} បានឈ្នះការប្រកួត! 🥇`;
+
+            // បង្ហាញអ្នកឈ្នះជាពីរភាសា (Display winners in Khmer & English)
+            resultDisplay.innerHTML = `🏆 លទ្ធផល៖ ${winnersKm.join(' និង ')} បានឈ្នះការប្រកួត! 🥇<br><small style="font-family: 'Poppins', sans-serif;">Result: ${winnersEn.join(' and ')} won the race!</small>`;
         }
-    }, 50); // រត់រៀងរាល់ 0.05 វិនាទី
+    }, 50); // រត់រៀងរាល់ 0.05 វិនាទី (Runs every 0.05 seconds)
 }
 
 function resetRace() {
     clearInterval(raceInterval);
     isRacing = false;
     startBtn.disabled = false;
-    resultDisplay.innerText = "សូមចុចប៊ូតុងដើម្បីចាប់ផ្តើម!";
-    
-    // នាំកីឡាករត្រឡប់ទៅចំណុចចាប់ផ្តើមវិញ
+    resultDisplay.innerHTML = `សូមចុចប៊ូតុងដើម្បីចាប់ផ្តើម!<br><small style="font-family: 'Poppins', sans-serif;">Click the start button to begin!</small>`;
+
+    // នាំកីឡាករត្រឡប់ទៅចំណុចចាប់ផ្តើមវិញ (Reset all swimmers back to starting line)
     swimmers.forEach(swimmer => {
         swimmer.pos = 40;
-        swimmer.element.style.left = '40px';
+        if (swimmer.element) {
+            swimmer.element.style.left = '40px';
+        }
     });
 }
 
