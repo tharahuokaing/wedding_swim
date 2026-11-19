@@ -1,150 +1,88 @@
-<!DOCTYPE html>
-<html lang="km">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ការប្រកួតប្រណាំងហែលទឹក - Swimming Race</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="footer.png">
-</head>
-<body>
+const startBtn = document.getElementById('startBtn');
+const resetBtn = document.getElementById('resetBtn');
+const resultDisplay = document.getElementById('result');
 
-    <div class="game-container">
-        <h1>🏊 ការប្រកួតប្រណាំងហែលទឹក 🏊</h1>
-        <p class="subtitle">កម្មវិធីប្រកួតប្រជែងល្បឿន</p>
+const swimmers = [
+    { element: document.getElementById('swimmer1'), nameKm: 'កីឡាការនី ឡូយ គីមមួយ', nameEn: 'Swimmer Loy Kimmuoy', pos: 40 },
+    { element: document.getElementById('swimmer2'), nameKm: 'កីឡាករ ណាក់', nameEn: 'Swimmer Nak', pos: 40 },
+    { element: document.getElementById('swimmer3'), nameKm: 'កីឡាករ ដំ', nameEn: 'Swimmer Dom', pos: 40 },
+    { element: document.getElementById('swimmer4'), nameKm: 'កីឡាករ គោ', nameEn: 'Swimmer Ko', pos: 40 },
+    { element: document.getElementById('swimmer5'), nameKm: 'កីឡាករ ឡែន', nameEn: 'Swimmer Len', pos: 40 },
+    { element: document.getElementById('swimmer6'), nameKm: 'កីឡាការនី ធន នីមុី', nameEn: 'Swimmer Thorn Nymoy', pos: 40 },
+    { element: document.getElementById('swimmer7'), nameKm: 'កីឡាការនី ស្រី ចាន់', nameEn: 'Swimmer Srey Chan', pos: 40 },
+    { element: document.getElementById('swimmer8'), nameKm: 'កីឡាការនី ហួកាំង ថារ័ត្ន', nameEn: 'Swimmer Huokaing Tharoat', pos: 40 },
+    { element: document.getElementById('swimmer9'), nameKm: 'កីឡាករ សេង ឆាត', nameEn: 'Swimmer Seng Chhat', pos: 40 },
+    { element: document.getElementById('swimmer10'), nameKm: 'កូនកំលោះ ហួកាំង ថារ៉ា', nameEn: 'Groom Huokaing Thara', pos: 40 },
+    { element: document.getElementById('swimmer11'), nameKm: 'កូនក្រមុំ ខេន លីដា', nameEn: 'Bride Khen Lida', pos: 40 },
+    { element: document.getElementById('swimmer12'), nameKm: 'កីឡាការនី សម្បិត្ត ឡុងនី', nameEn: 'Swimmer Sambath Longny', pos: 40 },
+    { element: document.getElementById('swimmer13'), nameKm: 'កីឡាករ សម្បិត្ត លីហាង', nameEn: 'Swimmer Sambath Lyhang', pos: 40 },
+    { element: document.getElementById('swimmer14'), nameKm: 'កីឡាការនី ហួ សុខលីម', nameEn: 'Swimmer Huo Soklim', pos: 40 },
+    { element: document.getElementById('swimmer15'), nameKm: 'កីឡាករ ហួ តុងហាំង', nameEn: 'Swimmer Huo Tonghang', pos: 40 },
+    { element: document.getElementById('swimmer16'), nameKm: 'កីឡាការនី តន ចាន់សីម៉ា', nameEn: 'Swimmer Ton Chanseyma', pos: 40 },
+    { element: document.getElementById('swimmer17'), nameKm: 'កីឡាករ សម្បិត្ត លីហ័រ', nameEn: 'Swimmer Sambath Lyhor', pos: 40 },
+    { element: document.getElementById('swimmer18'), nameKm: 'កីឡាករ ឡេង ណាវ៉ាត់ត្រា', nameEn: 'Swimmer Leng Navatra', pos: 40 },
+    { element: document.getElementById('swimmer19'), nameKm: 'កីឡាករ សុខ ខេមរ៉ា', nameEn: 'Swimmer Sok Khemara', pos: 40 },
+    { element: document.getElementById('swimmer20'), nameKm: 'កីឡាករ N/A', nameEn: 'Swimmer N/A', pos: 40 }
+];
 
-        <div class="swimming-pool">
-            <div class="lane" id="lane1">
-                <span class="lane-number">1</span>
-                <div class="swimmer" id="swimmer1">🏊‍♂️ <span class="name">កីឡាការនី ឡូយ​ គីមមួយ</span></div>
-                <div class="finish-line"></div>
-            </div>
-            
-            <div class="lane" id="lane2">
-                <span class="lane-number">2</span>
-                <div class="swimmer" id="swimmer2">🏊‍♂️ <span class="name">កីឡាករ ណាក់</span></div>
-                <div class="finish-line"></div>
-            </div>
+let raceInterval;
+let isRacing = false;
 
-            <div class="lane" id="lane3">
-                <span class="lane-number">3</span>
-                <div class="swimmer" id="swimmer3">🏊‍♂️ <span class="name">កីឡាករ ដំ</span></div>
-                <div class="finish-line"></div>
-            </div>
+function startRace() {
+    if (isRacing) return; // បើកំពុងប្រណាំង មិនឱ្យចុចដដែលៗទេ (Prevent duplicate clicks while racing)
+    isRacing = true;
+    startBtn.disabled = true;
+    resultDisplay.innerHTML = "កំពុងប្រជែងគ្នាយ៉ាងស្វិតស្វាញ... 🏊‍♂️💨<br><small style=\"font-family: 'Poppins', sans-serif;\">Racing fiercely toward the finish line...</small>";
 
-            <div class="lane" id="lane4">
-                <span class="lane-number">4</span>
-                <div class="swimmer" id="swimmer4">🏊‍♂️ <span class="name">កីឡាករ គោ</span></div>
-                <div class="finish-line"></div>
-            </div>
+    // ទទឹងអាងសរុប ដកទំហំរូបអ្នកហែលទឹក និងខ្សែទីព្រ័ត្រ (Total lane width minus swimmer & finish line offset)
+    const finishPos = document.querySelector('.lane').offsetWidth - 90;
 
-            <div class="lane" id="lane5">
-                <span class="lane-number">5</span>
-                <div class="swimmer" id="swimmer5">🏊‍♂️ <span class="name">កីឡាករ ឡែន</span></div>
-                <div class="finish-line"></div>
-            </div>
+    raceInterval = setInterval(() => {
+        let winnersKm = [];
+        let winnersEn = [];
 
-            <div class="lane" id="lane6">
-                <span class="lane-number">6</span>
-                <div class="swimmer" id="swimmer6">🏊‍♂️ <span class="name">កីឡាការនី ធន នីមុី</span></div>
-                <div class="finish-line"></div>
-            </div>
+        swimmers.forEach(swimmer => {
+            // បន្ថែមល្បឿនចៃដន្យពី ១ ទៅ ៧ ក្នុងមួយវគ្គ (Random speed increment per tick)
+            const speed = Math.random() * 6 + 1;
+            swimmer.pos += speed;
+            if (swimmer.element) {
+                swimmer.element.style.left = swimmer.pos + 'px';
+            }
 
-            <div class="lane" id="lane7">
-                <span class="lane-number">7</span>
-                <div class="swimmer" id="swimmer7">🏊‍♂️ <span class="name">កីឡាការនី ស្រី ចាន់</span></div>
-                <div class="finish-line"></div>
-            </div>
+            // ពិនិត្យមើលថាអ្នកណាដល់ទីព្រ័ត្រមុន (Check who crossed the finish line)
+            if (swimmer.pos >= finishPos) {
+                winnersKm.push(swimmer.nameKm);
+                winnersEn.push(swimmer.nameEn);
+            }
+        });
 
-            <div class="lane" id="lane8">
-                <span class="lane-number">8</span>
-                <div class="swimmer" id="swimmer8">🏊‍♂️ <span class="name">កីឡាការនី ហួកាំង ថារ័ត្ន</span></div>
-                <div class="finish-line"></div>
-            </div>
+        // បើសិនជាមានអ្នកដល់ទីព្រ័ត្រ (If one or more swimmers finish)
+        if (winnersKm.length > 0) {
+            clearInterval(raceInterval);
+            isRacing = false;
+            startBtn.disabled = false;
 
-            <div class="lane" id="lane9">
-                <span class="lane-number">9</span>
-                <div class="swimmer" id="swimmer9">🏊‍♂️ <span class="name">កីឡាករ សេង ឆាត</span></div>
-                <div class="finish-line"></div>
-            </div>
+            // បង្ហាញអ្នកឈ្នះជាពីរភាសា (Display winners in Khmer & English)
+            resultDisplay.innerHTML = `🏆 លទ្ធផល៖ ${winnersKm.join(' និង ')} បានឈ្នះការប្រកួត! 🥇<br><small style="font-family: 'Poppins', sans-serif;">Result: ${winnersEn.join(' and ')} won the race!</small>`;
+        }
+    }, 50); // រត់រៀងរាល់ 0.05 វិនាទី (Runs every 0.05 seconds)
+}
 
-            <div class="lane" id="lane10">
-                <span class="lane-number">10</span>
-                <div class="swimmer" id="swimmer10">🏊‍♂️ <span class="name">កូនកំលោះ ហួកាំង ថារ៉ា</span></div>
-                <div class="finish-line"></div>
-            </div>
+function resetRace() {
+    clearInterval(raceInterval);
+    isRacing = false;
+    startBtn.disabled = false;
+    resultDisplay.innerHTML = "សូមចុចប៊ូតុងដើម្បីចាប់ផ្តើម!<br><small style=\"font-family: 'Poppins', sans-serif;\">Click the start button to begin!</small>";
 
-            <div class="lane" id="lane11">
-                <span class="lane-number">11</span>
-                <div class="swimmer" id="swimmer11">🏊‍♂️ <span class="name">កូនក្រមុំ ខេន លីដា</span></div>
-                <div class="finish-line"></div>
-            </div>
- 
-            <div class="lane" id="lane12">
-                <span class="lane-number">12</span>
-                <div class="swimmer" id="swimmer12">🏊‍♂️ <span class="name">កីឡាការនី សម្បិត្ត​ ឡុងនី</span></div>
-                <div class="finish-line"></div>
-            </div>
+    // នាំកីឡាករត្រឡប់ទៅចំណុចចាប់ផ្តើមវិញ (Reset all swimmers back to starting line)
+    swimmers.forEach(swimmer => {
+        swimmer.pos = 40;
+        if (swimmer.element) {
+            swimmer.element.style.left = '40px';
+        }
+    });
+}
 
-            <div class="lane" id="lane13">
-                <span class="lane-number">13</span>
-                <div class="swimmer" id="swimmer13">🏊‍♂️ <span class="name">កីឡាករ សម្បិត្ត​ លីហាង</span></div>
-                <div class="finish-line"></div>
-            </div>
-
-            <div class="lane" id="lane14">
-                <span class="lane-number">14</span>
-                <div class="swimmer" id="swimmer14">🏊‍♂️ <span class="name">កីឡាការនី ហួ សុខលីម</span></div>
-                <div class="finish-line"></div>
-            </div>
-
-            <div class="lane" id="lane15">
-                <span class="lane-number">15</span>
-                <div class="swimmer" id="swimmer15">🏊‍♂️ <span class="name">កីឡាករ ហួ តុងហាំង</span></div>
-                <div class="finish-line"></div>
-            </div>
-
-            <div class="lane" id="lane16">
-                <span class="lane-number">16</span>
-                <div class="swimmer" id="swimmer16">🏊‍♂️ <span class="name">កីឡាការនី តន ចាន់សីម៉ា</span></div>
-                <div class="finish-line"></div>
-            </div>
-
-            <div class="lane" id="lane17">
-                <span class="lane-number">17</span>
-                <div class="swimmer" id="swimmer17">🏊‍♂️ <span class="name">កីឡាករ សម្បិត្ត​ លីហ័រ</span></div>
-                <div class="finish-line"></div>
-            </div>
-            
-            <div class="lane" id="lane18">
-                <span class="lane-number">18</span>
-                <div class="swimmer" id="swimmer18">🏊‍♂️ <span class="name">កីឡាករ ឡេង ណាវ៉ាត់ត្រា</span></div>
-                <div class="finish-line"></div>
-            </div>
-            
-            <div class="lane" id="lane19">
-                <span class="lane-number">19</span>
-                <div class="swimmer" id="swimmer19">🏊‍♂️ <span class="name">កីឡាករ សុខ ខេមរ៉ា</span></div>
-                <div class="finish-line"></div>
-            </div>
-            
-            <div class="lane" id="lane20">
-                <span class="lane-number">20</span>
-                <div class="swimmer" id="swimmer20">🏊‍♂️ <span class="name">កីឡាករ N/A</span></div>
-                <div class="finish-line"></div>
-            </div>
-        </div>
-
-        <div class="controls">
-            <button id="startBtn">ចាប់ផ្តើមប្រកួត 🏁</button>
-            <button id="resetBtn">រៀបចំឡើងវិញ 🔄</button>
-        </div>
-
-        <div id="result" class="result-box">សូមចុចប៊ូតុងដើម្បីចាប់ផ្តើម!</div>
-    </div>
-
-    <script src="music.js"></script>
-    <script src="script.js"></script>
-    <script src="ultra_secure_mode.js"></script>
-</body>
-</html>
+// ភ្ជាប់ព្រឹត្តិការណ៍ចុច (Click Events)
+startBtn.addEventListener('click', startRace);
+resetBtn.addEventListener('click', resetRace);
